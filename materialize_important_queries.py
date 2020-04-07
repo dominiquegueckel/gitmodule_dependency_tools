@@ -25,7 +25,7 @@ SUBPROCESS_OUTPUT_ENCODING = 'utf-8'
 DATABASE_FILE_NAME = "gitproject_dependency_database.db"
 
 sqlCmdForCleaningBuildsTable = "DELETE FROM Builds"
-sqlCmdForFillingBuildsTable = "insert or replace into Builds (buildJobId, sourceProjectId) select b.id, s.id from SourceCodeProject s, JenkinsBuildJob b where s.sourceCodeProjectName = b.buildJobName;"
+sqlCmdForFillingBuildsTable = "insert or replace into Builds (buildJobId, sourceProjectId) select b.id, s.id from SourceCodeProject s, JenkinsBuildJob b where s.SourceCodeRepositoryName = b.sourceCodeRepositoryUrl;"
 
 def materializeBuildsRelation(dbConnection):
     cursor = dbConnection.cursor()
